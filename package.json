@@ -1,3 +1,7 @@
 {
-  "name": "botwame"
+  "name": "botwame",
+  "dependencies": {
+    "qrcode-terminal": "^0.12.0",
+    "whatsapp-web.js": "^1.12.5"
+  }
 }
