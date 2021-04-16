@@ -1,6 +1,11 @@
 const fs = require("fs");
 //const { Client, Location } = require('./index');
-const { Client } = require("whatsapp-web.js");
+
+let NUMS = fs.readFileSync("datos.txt", "utf-8").split("\n");
+NUMS = NUMS.map((el) => el.replace("\r", ""));
+//console.log(datos);
+
+const { Client, MessageMedia } = require("whatsapp-web.js");
 
 const SESSION_FILE_PATH = "./session.json";
 let sessionCfg;
@@ -39,7 +44,19 @@ client.on("auth_failure", (msg) => {
 
 client.on("ready", () => {
   console.log("READY");
-  client.sendMessage("5217641190245@c.us", "Funciona!!!!!!");
+  //const media = MessageMedia.fromFilePath("./esperanza.jpg");
+  NUMS.forEach((num) => {
+    let tmp = `521${num}@c.us`;
+    client.sendMessage(
+      tmp,
+      "Todos los días, tenemos la oportunidad\nde ser mejores, la *4T* \nestá por llegar a xicotepec"
+    );
+  });
+  /*client.sendMessage(
+    "5215612047623@c.us",
+    "Esto es \n una _*prueba*_ _cursiva_\n*negrita*!!!!!!"
+  );*/
+  //client.sendMessage("5216241386712@c.us", "Funciona!!!!!!");
 });
 
 client.on("message", async (msg) => {
