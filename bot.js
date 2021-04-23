@@ -10,7 +10,7 @@ const CEL_IMAGEN = "B2";
 const LIBRO = new Excel.Workbook();
 
 const SESION_JSON = "./session.json";
-var client;
+//var client;
 
 const leerLibro = async (ruta) => {
   await LIBRO.xlsx.readFile(ruta);
@@ -25,7 +25,7 @@ const conSesGuardada = async () => {
   // Si exsite cargamos el archivo con las credenciales
   console.log("Si hay una sesión guardada");
   sessionData = require(SESION_JSON);
-  client = new Client({
+  let client = new Client({
     session: sessionData,
   });
 
@@ -35,10 +35,11 @@ const conSesGuardada = async () => {
     );
     process.exit(0);
   });
+  return client;
 };
 const sinSesGuardada = async () => {
   console.log("No tenemos session guardada");
-  client = new Client();
+  let client = new Client();
   client.on("qr", (qr) => {
     qrcode.generate(qr, { small: true });
   });
@@ -59,15 +60,17 @@ const sinSesGuardada = async () => {
     });
   });
 
-  client.initialize();
+  return client;
 };
 
 (async () => {
   await leerLibro(RUTA_EXCEL);
-  fs.existsSync(SESION_JSON) ? await conSesGuardada() : await sinSesGuardada();
+  let client = fs.existsSync(SESION_JSON)
+    ? await conSesGuardada()
+    : await sinSesGuardada();
+  await client.initialize();
+  console.log(client.info);
   client.on("ready", () => {
-    console.log("Client is ready!");
+    console.log(`WhatsApp Listo ${String(client.info.wid)}`);
   });
-
-  client.initialize();
 })();
