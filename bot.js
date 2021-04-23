@@ -3,7 +3,7 @@ const qrcode = require("qrcode-terminal");
 const { Client, MessageMedia } = require("whatsapp-web.js");
 const Excel = require("exceljs");
 
-const RUTA_EXCEL = "../../botWB/contactos.xlsx";
+const RUTA_EXCEL = "./imags/contactos.xlsx";
 const COL_NUMS = 2;
 const CEL_MENSAJE = "A2";
 const CEL_IMAGEN = "B2";
