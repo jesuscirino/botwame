@@ -1,0 +1,23 @@
+{
+  "name": "botwame",
+  "version": "1.0.0",
+  "description": "Bot WhatsApp con interface desde Excel",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jesuscirino/botwame.git"
+  },
+  "keywords": [
+    "WhatsApp",
+    "Bot"
+  ],
+  "author": "Jesús Cirino Rosales Palestino",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jesuscirino/botwame/issues"
+  },
+  "homepage": "https://github.com/jesuscirino/botwame#readme"
+}
