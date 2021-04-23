@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/jesuscirino/botwame/issues"
   },
-  "homepage": "https://github.com/jesuscirino/botwame#readme"
+  "homepage": "https://github.com/jesuscirino/botwame#readme",
+  "dependencies": {
+    "exceljs": "^4.2.1"
+  }
 }
